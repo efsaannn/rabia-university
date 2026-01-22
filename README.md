@@ -1,2 +1,2 @@
 # rabia-university
-Rabia University Premium Web Portal
+Rabia University  Web Portal
