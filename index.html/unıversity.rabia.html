@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabia University | Excellence & Innovation</title>
+    <!-- Font Awesome Ikon Seti -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* FSU RESMİ RENK PALETİ */
+        :root {
+            --fsu-garnet: #78244c;    /* FSU Garnet */
+            --fsu-gold: #ceb888;      /* FSU Gold */
+            --fsu-black: #2c2a29;
+            --white: #ffffff;
+            --gray-light: #f8f8f8;
+            --transition: 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gray-light);
+            overflow: hidden; /* Yatay geçiş için zorunlu */
+        }
+
+        /* TOP UTILITY BAR */
+        .top-bar {
+            background-color: var(--fsu-black);
+            color: white;
+            padding: 10px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .social-links i {
+            margin-right: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-links i:hover { color: var(--fsu-gold); }
+
+        .top-nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .top-nav-links a:hover { color: var(--fsu-gold); }
+
+        /* MAIN HEADER */
+        header {
+            background-color: var(--fsu-garnet);
+            color: white;
+            padding: 25px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 5px solid var(--fsu-gold);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .brand { display: flex; align-items: center; gap: 20px; }
+        .brand i { font-size: 55px; color: var(--fsu-gold); }
+        .brand h1 { margin: 0; font-size: 32px; letter-spacing: 2px; font-weight: 900; }
+
+        .apply-btn {
+            background-color: var(--fsu-gold);
+            color: var(--fsu-black);
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 13px;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .apply-btn:hover { background-color: transparent; color: var(--fsu-gold); border-color: var(--fsu-gold); }
+
+        /* NAVIGATION MENU */
+        nav {
+            background-color: white;
+            padding: 0 10%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--fsu-black);
+            padding: 22px 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-bottom: 4px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--fsu-garnet);
+            border-bottom: 4px solid var(--fsu-garnet);
+        }
+
+        /* HORIZONTAL SLIDER SYSTEM */
+        main {
+            display: flex;
+            width: 500vw;
+            height: calc(100vh - 220px);
+            transition: transform var(--transition);
+        }
+
+        section {
+            width: 100vw;
+            height: 100%;
+            overflow-y: auto;
+            background-color: white;
+            padding-bottom: 100px;
+        }
+
+        /* COMPONENTS & CONTENT */
+        .hero {
+            height: 550px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: linear-gradient(to right, rgba(120,36,76,0.9), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            margin-left: 10%;
+            max-width: 650px;
+            padding: 40px;
+            border-left: 12px solid var(--fsu-gold);
+        }
+
+        .container { width: 80%; margin: 60px auto; }
+
+        .section-header {
+            font-size: 40px;
+            color: var(--fsu-garnet);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--fsu-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            transition: 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 230px; object-fit: cover; }
+        .card-body { padding: 30px; }
+        .card-body h3 { color: var(--fsu-garnet); margin-top: 0; font-size: 22px; }
+        .card-body p { color: #555; line-height: 1.7; font-size: 15px; }
+
+        /* QUICK LINKS STRIP */
+        .quick-strip {
+            background-color: var(--fsu-garnet);
+            color: white;
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .quick-strip h4 { color: var(--fsu-gold); text-transform: uppercase; margin-bottom: 20px; font-size: 18px; }
+        .quick-strip ul { list-style: none; padding: 0; }
+        .quick-strip li { margin-bottom: 12px; font-size: 14px; opacity: 0.8; cursor: pointer; transition: 0.2s; }
+        .quick-strip li:hover { opacity: 1; text-decoration: underline; color: var(--fsu-gold); }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--fsu-black);
+            color: #aaa;
+            padding: 50px 10%;
+            text-align: center;
+            border-top: 5px solid var(--fsu-gold);
+        }
+
+        .footer-socials { margin-bottom: 25px; }
+        .footer-socials i {
+            font-size: 28px;
+            color: var(--fsu-gold);
+            margin: 0 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-socials i:hover { color: white; transform: translateY(-5px); }
+
+        /* SCROLLBAR */
+        section::-webkit-scrollbar { width: 10px; }
+        section::-webkit-scrollbar-thumb { background: var(--fsu-garnet); }
+        section::-webkit-scrollbar-track { background: #eee; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Üst Bilgi Çubuğu -->
+    <div class="top-bar">
+        <div class="social-links">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
+        <div class="top-nav-links">
+            <a href="#">Canvas</a>
+            <a href="#">myFSU</a>
+            <a href="#">Libraries</a>
+            <a href="#">Directory</a>
+            <a href="#"><i class="fas fa-search"></i> Search</a>
+        </div>
+    </div>
+
+    <!-- Header Bölümü -->
+    <header>
+        <div class="brand">
+            <i class="fas fa-university"></i>
+            <div>
+                <h1>RABIA UNIVERSITY</h1>
+                <div style="font-size: 12px; color: var(--fsu-gold); font-weight: bold; letter-spacing: 3px;">RESEARCH & LEADERSHIP</div>
+            </div>
+        </div>
+        <div>
+            <a href="javascript:void(0)" onclick="moveSlide(4)" class="apply-btn">Apply to Rabia U</a>
+        </div>
+    </header>
+
+    <!-- Ana Navigasyon -->
+    <nav id="nav">
+        <a href="javascript:void(0)" onclick="moveSlide(0)" class="active">Overview</a>
+        <a href="javascript:void(0)" onclick="moveSlide(1)">Academics</a>
+        <a href="javascript:void(0)" onclick="moveSlide(2)">Research</a>
+        <a href="javascript:void(0)" onclick="moveSlide(3)">Student Life</a>
+        <a href="javascript:void(0)" onclick="moveSlide(4)">Admissions</a>
+    </nav>
+
+    <!-- Slider İçeriği -->
+    <main id="slider">
+        
+        <!-- SAYFA 1: OVERVIEW (HOME) -->
+        <section>
+            <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1500&q=80');">
+                <div class="hero-content">
+                    <h2 style="font-size: 48px; margin: 0; line-height: 1.1;">ONE OF THE NATION'S TOP RESEARCH UNIVERSITIES</h2>
+                    <p style="font-size: 20px; margin: 25px 0;">Rabia University offers a world-class education with a focus on student success and groundbreaking discovery.</p>
+                    <a href="javascript:void(0)" onclick="moveSlide(1)" class="apply-btn" style="background: white; color: var(--fsu-garnet);">Explore Academics</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <h2 class="section-header">University News</h2>
+                <div class="grid">
+                    <div class="card">
+                        
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="News 1">
+                        <div class="card-body">
+                            <h3>$50M Innovation Grant</h3>
+                            <p>Rabia University receives a massive grant to lead the next generation of aerospace engineering research.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="News 2">
+                        <div class="card-body">
+                            <h3>Global Exchange Program</h3>
+                            <p>Expanding our horizons: RU announces 15 new partner universities across Europe and Asia for student exchange.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=80" alt="News 3">
+                        <div class="card-body">
+                            <h3>Record Graduation Rates</h3>
+                            <p>Our commitment to student support has resulted in the highest four-year graduation rate in university history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-strip">
+                <div>
+                    <h4>Top Colleges</h4>
+                    <ul>
+                        <li>College of Business</li>
+                        <li>College of Arts & Sciences</li>
+                        <li>College of Motion Picture Arts</li>
+                        <li>College of Engineering</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li>Financial Aid</li>
+                        <li>Campus Maps</li>
+                        <li>Employment</li>
+                        <li>University Health Services</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>University Info</h4>
+                    <ul>
+                        <li>Office of the President</li>
+                        <li>Board of Trustees</li>
+                        <li>Mission & Strategic Plan</li>
+                        <li>History & Traditions</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources For</h4>
+                    <ul>
+                        <li>Current Students</li>
+                        <li>Faculty & Staff</li>
+                        <li>Alumni & Friends</li>
+                        <li>Parents & Families</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAYFA 2: ACADEMICS -->
+        <section>
+            <div class="container">
+                <h2 class="section-header">Academic Excellence</h2>
+                <p style="font-size: 20px; color: #666; margin-bottom: 50px;">Ranked in the top tier of public universities, RU provides a rigorous yet supportive academic environment.</p>
+                <div class="grid">
+                    <div class="card-body" style="background: #fdfdfd; border-left: 5px solid var(--fsu-garnet);">
+                        <i class="fas fa-book-open" style="font-size: 35px; color: var(--fsu-garnet);"></i>
+                        <h3>Undergraduate Programs</h3>
+                        <p>Choose from over 100 majors across a variety of fields, from the humanities to the sciences.</p>
+                    </div>
+                    <div class="card-body" style="background: #fdfdfd; border-left: 5px solid var(--fsu-garnet);">
+                        <i class="fas fa-user-graduate" style="font-size: 35px; color: var(--fsu-garnet);"></i>
+                        <h3>Graduate Studies</h3>
+                        <p>Advance your career with our nationally-ranked master's and doctoral programs.</p>
+                    </div>
+                    <div class="card-body" style="background: #fdfdfd; border-left: 5px solid var(--fsu-garnet);">
+                        <i class="fas fa-laptop-code" style="font-size: 35px; color: var(--fsu-garnet);"></i>
+                        <h3>Online Learning</h3>
+                        <p>Flexible, high-quality online degrees designed for working professionals and distance learners.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 60px; background: var(--fsu-gold); padding: 50px; text-align: center;">
+                    <h2 style="color: var(--fsu-garnet); margin: 0;">18:1 STUDENT-TO-FACULTY RATIO</h2>
+                    <p style="font-size: 18px; font-weight: bold;">Experience personalized attention from world-class faculty.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAYFA 3: RESEARCH -->
+        <section>
+            <div class="container">
+                <h2 class="section-header">Research & Discovery</h2>
+                <div style="display: flex; gap: 50px; align-items: center; margin-bottom: 70px; flex-wrap: wrap;">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" style="width: 500px; max-width: 100%; border-radius: 10px;" alt="Research Image">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-size: 32px; color: var(--fsu-garnet);">A Powerhouse of Innovation</h3>
+                        <p style="font-size: 18px; line-height: 1.8;">Rabia University faculty members are leaders in their fields, conducting research that changes lives. From high-energy physics to medical breakthroughs, our work has global impact.</p>
+                        <ul style="color: var(--fsu-garnet); font-weight: bold; font-size: 16px;">
+                            <li>$250M Annual Research Expenditures</li>
+                            <li>50+ Specialized Research Centers</li>
+                            <li>Top-Ranked High Magnetic Field Laboratory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAYFA 4: STUDENT LIFE -->
+        <section>
+            <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1500&q=80'); height: 350px;">
+                <div class="hero-content">
+                    <h2 style="font-size: 36px; margin: 0;">The Full RU Experience</h2>
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="section-header">Campus Spirit</h2>
+                <div class="grid">
+                    <div class="card">
+                        
+                        <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=600&q=80" alt="Life 1">
+                        <div class="card-body">
+                            <h3>Athletics & Tradition</h3>
+                            <p>Home of the RU Lions. Our NCAA Division I teams and deep-seated traditions unite our campus community.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Life 2">
+                        <div class="card-body">
+                            <h3>700+ Student Orgs</h3>
+                            <p>Find your niche, build your leadership skills, and make lifelong friends in our diverse student organizations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAYFA 5: ADMISSIONS -->
+        <section>
+            <div class="container" style="text-align: center; max-width: 900px;">
+                <h2 class="section-header">Start Your Journey</h2>
+                <div style="background: white; border: 5px solid var(--fsu-garnet); padding: 70px; margin: 40px 0; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                    <h3 style="font-size: 36px; color: var(--fsu-garnet); margin-bottom: 10px;">Apply to Rabia University</h3>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 40px;">Applications for Fall 2026 are now open. Join a legacy of leaders and innovators.</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <a href="#" class="apply-btn" style="padding: 20px 40px; font-size: 16px;">First-Year Student</a>
+                        <a href="#" class="apply-btn" style="background: var(--fsu-black); color: white; padding: 20px 40px; font-size: 16px;">Graduate Student</a>
+                    </div>
+                    <p style="margin-top: 30px; font-weight: bold; color: var(--fsu-garnet);">Standard Application Deadline: Jan 15, 2026</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+        <p>&copy; 2026 Rabia University | Tallahassee, FL 32306 | (555) 123-4567</p>
+        <p style="font-size: 11px; margin-top: 20px; opacity: 0.5;">Privacy Policy | Copyright | Web Accessibility | Title IX | Non-Discrimination</p>
+    </footer>
+
+    <script>
+        function moveSlide(index) {
+            // Ana içeriği kaydır
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${index * 100}vw)`;
+
+            // Navigasyon linklerini güncelle
+            const links = document.querySelectorAll('#nav a');
+            links.forEach((link, i) => {
+                if(i === index) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+
+            // Sayfanın en üstüne gitmesini sağla (her geçişte)
+            const sections = document.querySelectorAll('section');
+            sections[index].scrollTop = 0;
+        }
+
+        // Sosyal medya ikonları için tıklama simülasyonu
+        document.querySelectorAll('.footer-socials i, .social-links i').forEach(icon => {
+            icon.onclick = () => {
+                console.log("Social link clicked");
+            }
+        });
+    </script>
+
+</body>
+</html>
